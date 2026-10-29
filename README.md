@@ -1,49 +1,45 @@
-# projetointegrador-VI-B
+### Projeto Integrador VI-B
 
 # Agende-se
 
-Projeto acadêmico desenvolvido para a disciplina de Projeto Integrador VI-B da Universidade de Caxias do Sul (UCS).
+## Sobre o Projeto
 
-## Sobre o projeto
+O **Agende-se** é um aplicativo mobile voltado ao gerenciamento de tarefas empresariais, desenvolvido para auxiliar pequenas e médias empresas na organização de suas atividades, distribuição de responsabilidades e acompanhamento de resultados.
 
-O **Agende-se** é um aplicativo mobile voltado ao gerenciamento de tarefas empresariais, desenvolvido com o objetivo de auxiliar pequenas e médias empresas na organização das suas atividades, distribuição de responsabilidades e acompanhamento de resultados.
+O aplicativo permitirá que gestores cadastrem tarefas, estabeleçam prazos, definam prioridades, atribuam responsáveis e acompanhem a execução das atividades.
 
-O aplicativo permitirá cadastrar tarefas, definir prazos, atribuir responsáveis, estabelecer prioridades e acompanhar a execução das atividades.
+Além disso, contará com indicadores de produtividade que auxiliarão na análise de dados e na tomada de decisões empresariais.
 
-Contará também com indicadores que auxiliam na análise de dados e na tomada de decisões empresariais.
-
-## Problema que resolve
-
-Muitas empresas enfrentam dificuldades na organização das suas atividades diárias, resultado em atrasos, falhas de comunicação, tarefas esquecidas e falta de clareza sobre as responsabilidades de cada colaborador.
-
-O Agende-se propõe centralizar o gerenciamento dessas atividades em uma ferramenta simples e acessível.
-
-## Público-alvo
-
-Pequenas e médias empresas que buscam melhorar sua organização interna, otimizar processos e aumentar a produtividade de seus colaboradores.
-
-O aplicativo é destinado principalmente a gestores, supervisores e colaboradores envolvidos no planejamento e execução das atividades.
-
-## Funcionalidades previstas
+## Funcionalidades Previstas
 
 - Cadastro e gerenciamento de tarefas.
-- Definição de datas e horários.
-- Classificação de prioridades.
-- Identificação de solicitantes e responsáveis.
+- Definição de datas, horários e prioridades.
+- Identificação de responsáveis e solicitantes.
 - Acompanhamento da situação das tarefas.
 - Visualização de tarefas em lista ou calendário.
 - Dashboard com indicadores de produtividade.
 - Armazenamento local com funcionamento offline.
 
-## Banco de dados
+## Tecnologias
 
-O aplicativo utilizará um banco de dados SQLite, armazenado localmente no dispositivo.
+O aplicativo será desenvolvido utilizando tecnologias voltadas ao desenvolvimento mobile, com banco de dados SQLite para armazenamento local das informações.
 
-As informações poderão ser cadastradas, consultadas e atualizadas sem necessidade de conexão com internet.
+As tecnologias e bibliotecas utilizadas serão detalhadas na documentação do projeto.
 
 ## Documentação
 
-Os documentos do projeto estão organizados na pasta `docs/`, enquanto os protótipos das telas estão disponíveis na pasta `wireframes/`.
+A documentação completa está organizada nos seguintes arquivos:
+
+- [Descrição do Projeto](docs/projeto.md)
+- [Funcionalidades e Regras de Negócio](docs/funcionalidades.md)
+- [Modelo Entidade-Relacionamento](docs/modelo-er.md)
+- [Tecnologias Utilizadas](docs/tecnologias.md)
+- [Banco de Dados Local](docs/banco-local.md)
+- [Geração do APK](docs/geracao-apk.md)
+
+## Wireframes
+
+Os protótipos das telas do aplicativo estarão disponíveis na pasta [wireframes](wireframes/).
 
 ## Integrantes
 
