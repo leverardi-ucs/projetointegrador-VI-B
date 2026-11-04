@@ -1,5 +1,5 @@
 
-# Modelo Entidade-Relacionamento (ER) — Agende-se
+# Agende-se — Modelo Entidade-Relacionamento (ER)
 
 O aplicativo **Agende-se** utiliza um banco de dados relacional SQLite para armazenar localmente as informações relacionadas ao gerenciamento de tarefas empresariais.
 
