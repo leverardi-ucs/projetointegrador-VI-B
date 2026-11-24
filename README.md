@@ -6,25 +6,59 @@
 
 O **Agende-se** é um aplicativo mobile voltado ao gerenciamento de tarefas empresariais, desenvolvido para auxiliar pequenas e médias empresas na organização de suas atividades, distribuição de responsabilidades e acompanhamento de resultados.
 
-O aplicativo permitirá que gestores cadastrem tarefas, estabeleçam prazos, definam prioridades, atribuam responsáveis e acompanhem a execução das atividades.
+O aplicativo permite que gestores cadastrem tarefas, estabeleçam prazos, definam prioridades, atribuam responsáveis e acompanhem a execução das atividades.
 
-Além disso, contará com indicadores de produtividade que auxiliarão na análise de dados e na tomada de decisões empresariais.
+Além disso, conta com indicadores de produtividade que auxiliam na análise de dados e na tomada de decisões empresariais.
 
-## Funcionalidades Previstas
+## Download do Aplicativo
 
-- Cadastro e gerenciamento de tarefas.
+O aplicativo está disponível para instalação em dispositivos Android.
+
+**[Baixar Agende-se — APK](https://github.com/leverardi-ucs/projetointegrador-VI-B/raw/main/apk/agende-se.apk)**
+
+As instruções de instalação estão disponíveis na documentação de [Geração do APK](docs/geracao-apk.md).
+
+## Funcionalidades Implementadas
+
+- Cadastro, edição, consulta e exclusão lógica de tarefas.
 - Definição de datas, horários e prioridades.
 - Identificação de responsáveis e solicitantes.
-- Acompanhamento da situação das tarefas.
+- Cadastro e consulta de integrantes da equipe.
+- Acompanhamento e alteração da situação das tarefas.
+- Filtragem de tarefas por situação.
 - Visualização de tarefas em lista ou calendário.
 - Dashboard com indicadores de produtividade.
 - Armazenamento local com funcionamento offline.
+- Persistência das informações após o fechamento do aplicativo.
 
-## Tecnologias
+## Tecnologias Utilizadas
 
-O aplicativo será desenvolvido utilizando tecnologias voltadas ao desenvolvimento mobile, com banco de dados SQLite para armazenamento local das informações.
+- Ionic Framework
+- Angular
+- TypeScript
+- HTML5
+- CSS3 e SCSS
+- Capacitor
+- SQLite
+- Capacitor Community SQLite
+- Ionicons
 
-As tecnologias e bibliotecas utilizadas serão detalhadas na documentação do projeto.
+O aplicativo utiliza um banco de dados relacional local composto por quatro tabelas relacionadas, permitindo o armazenamento e a consulta das informações sem necessidade de conexão com a internet.
+
+## Código-Fonte
+
+O código-fonte completo do aplicativo está disponível na pasta [app](app/).
+
+O projeto foi desenvolvido utilizando o Visual Studio Code e executado e testado em um emulador Android por meio do Android Studio.
+
+## Estrutura do Repositório
+
+| Diretório | Descrição |
+|---|---|
+| `app/` | Código-fonte do aplicativo. |
+| `apk/` | Arquivo APK para instalação. |
+| `docs/` | Documentação do projeto. |
+| `wireframes/` | Protótipos das interfaces. |
 
 ## Documentação
 
@@ -39,7 +73,7 @@ A documentação completa está organizada nos seguintes arquivos:
 
 ## Wireframes
 
-Os protótipos das telas do aplicativo estarão disponíveis na pasta [wireframes](wireframes/).
+Os protótipos das telas do aplicativo estão disponíveis na pasta [wireframes](wireframes/).
 
 ## Integrantes
 
@@ -48,7 +82,10 @@ Os protótipos das telas do aplicativo estarão disponíveis na pasta [wireframe
 - Joe Sander dos Reis Marinho
 - João Gabriel Silvestrin
 
+---
 
-Universidade de Caxias do Sul (UCS)
+**Universidade de Caxias do Sul (UCS)**
+
 Curso: Análise e Desenvolvimento de Sistemas
+
 Disciplina: Projeto Integrador VI-B
