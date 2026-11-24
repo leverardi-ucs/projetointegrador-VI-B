@@ -1,4 +1,3 @@
-
 # Agende-se — Modelo Entidade-Relacionamento (ER)
 
 O aplicativo **Agende-se** utiliza um banco de dados relacional SQLite para armazenar localmente as informações relacionadas ao gerenciamento de tarefas empresariais.
@@ -7,7 +6,7 @@ O modelo foi desenvolvido para permitir o cadastro de usuários, a classificaç�
 
 ## 1. Diagrama Entidade-Relacionamento
 
-O banco de dados será composto por quatro tabelas:
+O banco de dados é composto por quatro tabelas:
 
 - `usuarios`
 - `prioridades`
@@ -30,9 +29,9 @@ Armazena os colaboradores cadastrados no aplicativo.
 | nome | TEXT | NOT NULL |
 | email | TEXT | NOT NULL, UNIQUE |
 | cargo | TEXT | NULL |
-| ativo | INTEGER | NOT NULL, DEFAULT 1, CHECK (ativo IN (0,1)) |
+| ativo | INTEGER | NOT NULL, DEFAULT 1 |
 
-O campo `ativo` permite desativar colaboradores sem excluir seus registros.
+O campo `ativo` está previsto na estrutura do banco para permitir uma futura funcionalidade de desativação de colaboradores sem excluir seus registros.
 
 ### Tabela: `prioridades`
 
@@ -45,7 +44,7 @@ Armazena os níveis de prioridade das tarefas.
 | cor_hex | TEXT | NOT NULL |
 | ordem | INTEGER | NOT NULL |
 
-As prioridades previstas são:
+As prioridades cadastradas são:
 
 - Baixa
 - Média
@@ -60,16 +59,15 @@ Armazena as situações possíveis das tarefas.
 |---|---|---|
 | id | INTEGER | PRIMARY KEY AUTOINCREMENT |
 | nome_status | TEXT | NOT NULL |
-| is_concluida | INTEGER | NOT NULL, DEFAULT 0, CHECK (is_concluida IN (0,1)) |
+| is_concluida | INTEGER | NOT NULL, DEFAULT 0 |
 
-As situações previstas são:
+As situações cadastradas são:
 
 - Pendente
 - Em andamento
 - Concluída
-- Cancelada
 
-O campo `is_concluida` identifica se a tarefa foi efetivamente concluída.
+O campo `is_concluida` identifica se determinada situação corresponde à conclusão de uma tarefa.
 
 ### Tabela: `tarefas`
 
@@ -87,9 +85,11 @@ Armazena as atividades cadastradas no aplicativo.
 | responsavel_id | INTEGER | NOT NULL, FOREIGN KEY |
 | prioridade_id | INTEGER | NOT NULL, FOREIGN KEY |
 | status_id | INTEGER | NOT NULL, FOREIGN KEY |
-| arquivada | INTEGER | NOT NULL, DEFAULT 0, CHECK (arquivada IN (0,1)) |
+| arquivada | INTEGER | NOT NULL, DEFAULT 0 |
 
-O campo `arquivada` permitirá ocultar tarefas das consultas principais sem excluir definitivamente seus registros.
+O campo `arquivada` permite ocultar tarefas das consultas principais sem excluir definitivamente seus registros.
+
+O campo `data_hora_conclusao` está presente na estrutura do banco, podendo ser utilizado em futuras melhorias. Na versão atual, a conclusão da tarefa é controlada pelo campo `status_id`.
 
 ## 3. Relacionamentos
 
@@ -100,7 +100,7 @@ O modelo apresenta os seguintes relacionamentos:
 - **prioridades → tarefas (1:N):** uma prioridade pode estar associada a várias tarefas.
 - **status_tarefas → tarefas (1:N):** uma situação pode estar associada a várias tarefas.
 
-As chaves estrangeiras da tabela `tarefas` serão:
+As chaves estrangeiras da tabela `tarefas` são:
 
 - `solicitante_id` → `usuarios.id`
 - `responsavel_id` → `usuarios.id`
@@ -109,25 +109,29 @@ As chaves estrangeiras da tabela `tarefas` serão:
 
 ## 4. Regras de Integridade
 
-Para garantir a consistência dos dados, serão utilizadas:
+Para garantir a consistência dos dados, são utilizadas:
 
 - Chaves primárias para identificação dos registros.
 - Chaves estrangeiras para relacionar as tabelas.
 - Restrições NOT NULL para campos obrigatórios.
 - Restrição UNIQUE para impedir e-mails duplicados.
 - Valores DEFAULT para inicialização de determinados campos.
-- Restrições CHECK para campos booleanos.
+- Validações nos formulários da aplicação.
 
-Usuários associados a tarefas não poderão ser excluídos fisicamente enquanto existirem registros dependentes.
+A integridade referencial é habilitada durante a inicialização do banco de dados por meio do comando `PRAGMA foreign_keys = ON`.
+
+Usuários associados a tarefas não podem ser excluídos fisicamente enquanto existirem registros dependentes.
 
 ## 5. Armazenamento Local
 
-O banco de dados será implementado utilizando SQLite, integrado ao aplicativo por meio do plugin Capacitor Community SQLite.
+O banco de dados foi implementado utilizando SQLite, integrado ao aplicativo por meio do plugin Capacitor Community SQLite.
 
-Todas as informações serão armazenadas diretamente no dispositivo Android, permitindo o funcionamento offline.
+Todas as informações são armazenadas diretamente no dispositivo Android, permitindo o funcionamento offline.
+
+A criação das tabelas, a inserção dos registros iniciais e as operações de persistência são implementadas no serviço `DatabaseService`, localizado no arquivo `src/app/services/database.ts` do aplicativo.
 
 ## 6. Considerações Finais
 
-O modelo relacional do Agende-se foi estruturado com quatro tabelas relacionadas, atendendo aos requisitos de armazenamento local e gerenciamento de tarefas empresariais.
+O modelo relacional do Agende-se foi implementado com quatro tabelas relacionadas, atendendo aos requisitos de armazenamento local e gerenciamento de tarefas empresariais.
 
-A estrutura permitirá realizar cadastros, consultas, atualizações e gerar indicadores de produtividade a partir dos dados armazenados no dispositivo.
+A estrutura permite realizar cadastros, consultas, atualizações, exclusões lógicas e gerar indicadores de produtividade a partir dos dados armazenados no dispositivo.
