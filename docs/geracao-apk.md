@@ -1,15 +1,14 @@
-
 # Agende-se — Geração do APK
 
 ## 1. Introdução
 
-O aplicativo Agende-se será desenvolvido utilizando Ionic, Angular e TypeScript, com o Capacitor responsável pela integração com a plataforma Android.
+O aplicativo Agende-se foi desenvolvido utilizando Ionic, Angular e TypeScript, com o Capacitor responsável pela integração com a plataforma Android.
 
-Para disponibilizar o aplicativo para instalação em dispositivos Android, será gerado um arquivo APK, utilizando o Android Studio.
+Para disponibilizar o aplicativo para instalação em dispositivos Android, foi gerado um arquivo APK utilizando o Android Studio.
 
 ## 2. Ferramentas Necessárias
 
-Para a geração do APK, serão utilizadas as seguintes ferramentas:
+Para a geração do APK, foram utilizadas as seguintes ferramentas:
 
 - Node.js e npm
 - Ionic CLI
@@ -20,87 +19,103 @@ Para a geração do APK, serão utilizadas as seguintes ferramentas:
 
 ## 3. Preparação do Projeto
 
-Inicialmente, será necessário instalar as dependências do projeto e gerar os arquivos da aplicação web.
+O código-fonte do aplicativo está disponível na pasta `app` deste repositório.
 
-Na pasta principal do projeto, será executado o comando:
+Para preparar o ambiente de desenvolvimento, é necessário acessar essa pasta e instalar as dependências do projeto:
 
 ```bash
+cd app
 npm install
 ```
 
-Em seguida, será realizada a compilação da aplicação:
+Em seguida, deve ser realizada a compilação da aplicação:
 
 ```bash
 ionic build
 ```
 
-Esse processo gerará os arquivos necessários para a execução da interface do aplicativo.
+Esse processo gera os arquivos necessários para a execução da interface do aplicativo.
 
 ## 4. Integração com Android
 
-O Capacitor será utilizado para integrar o projeto Ionic à plataforma Android.
+O Capacitor é utilizado para integrar o projeto Ionic à plataforma Android.
 
-Caso a plataforma Android ainda não esteja configurada, serão executados os comandos:
+A plataforma Android já está configurada e disponível no código-fonte deste repositório.
 
-```bash
-npm install @capacitor/android
-npx cap add android
-```
-
-Após a configuração, os arquivos compilados serão sincronizados com o projeto Android:
+Para sincronizar os arquivos compilados com o projeto Android, deve ser executado o comando:
 
 ```bash
 npx cap sync android
 ```
 
-Esse comando atualizará os arquivos e plugins nativos utilizados pelo aplicativo.
+Esse comando atualiza os arquivos e plugins nativos utilizados pelo aplicativo.
 
 ## 5. Abertura no Android Studio
 
-Após a sincronização, o projeto Android será aberto utilizando:
+Após a sincronização, o projeto Android pode ser aberto utilizando:
 
 ```bash
 npx cap open android
 ```
 
-O Android Studio permitirá realizar a compilação, configuração e geração do aplicativo Android.
+O Android Studio permite realizar a compilação, configuração, execução em emuladores e geração do aplicativo Android.
 
 ## 6. Geração do APK
 
-Com o projeto aberto no Android Studio, será utilizado o menu:
+Com o projeto aberto no Android Studio, foi utilizado o menu:
 
-**Build > Generate Bundle(s) / APK(s) > Generate APK(s)**
+**Build > Generate App Bundles or APKs > Generate APKs**
 
-O Android Studio realizará a compilação do projeto e gerará o arquivo APK.
+O Android Studio realizou a compilação do projeto e gerou o arquivo APK.
 
-Para testes, poderemos utilizar um APK de debug.
+Para a entrega acadêmica, foi utilizado um APK de debug, permitindo a instalação do aplicativo sem necessidade de publicação na Google Play Store.
 
 ## 7. Localização do Arquivo APK
 
-Após a compilação, o arquivo gerado poderá ser encontrado, normalmente, no seguinte diretório:
+Após a compilação, o arquivo gerado foi disponibilizado no seguinte diretório:
 
 ```text
 android/app/build/outputs/apk/debug/app-debug.apk
 ```
 
-O arquivo poderá ser transferido e instalado em um dispositivo Android compatível.
+O arquivo foi renomeado para `agende-se.apk` e disponibilizado na pasta `apk` deste repositório.
 
-## 8. Testes do Aplicativo
+## 8. Download e Instalação
 
-Após a geração do APK, serão realizados testes para verificar:
+O aplicativo está disponível para download no seguinte link:
 
-- Instalação e inicialização do aplicativo.
+[Baixar Agende-se APK](../apk/agende-se.apk)
+
+Para instalar o aplicativo:
+
+1. Realizar o download do arquivo APK em um dispositivo Android compatível.
+2. Abrir o arquivo baixado.
+3. Autorizar a instalação de aplicativos provenientes dessa fonte, caso solicitado pelo Android.
+4. Confirmar a instalação.
+5. Abrir o aplicativo Agende-se.
+
+Não é necessário instalar ferramentas de desenvolvimento para utilizar o APK.
+
+## 9. Testes do Aplicativo
+
+Durante o desenvolvimento, foram realizados testes utilizando o emulador Android disponibilizado pelo Android Studio.
+
+Foram verificadas as seguintes funcionalidades:
+
+- Inicialização do aplicativo.
 - Funcionamento das telas e navegação.
-- Cadastro, edição e consulta de tarefas.
+- Cadastro e consulta de usuários.
+- Cadastro, edição, consulta e exclusão lógica de tarefas.
+- Alteração das situações das tarefas.
 - Funcionamento do banco de dados SQLite.
 - Persistência das informações após fechar e reabrir o aplicativo.
-- Funcionamento sem conexão com a internet.
 
-Os testes offline serão realizados com o dispositivo em modo avião, verificando se as principais funcionalidades permanecem disponíveis.
+O armazenamento local permite que as funcionalidades do aplicativo sejam utilizadas sem conexão com a internet.
 
-## 9. Considerações Finais
+## 10. Considerações Finais
 
-A utilização do Ionic, Angular e Capacitor permitirá desenvolver o Agende-se utilizando tecnologias web e disponibilizá-lo como um aplicativo Android.
+A utilização do Ionic, Angular e Capacitor possibilitou o desenvolvimento do Agende-se utilizando tecnologias web e sua disponibilização como um aplicativo Android.
 
-O Android Studio será responsável pela compilação e geração do APK, possibilitando a instalação e execução do aplicativo em dispositivos compatíveis.
+O Android Studio foi utilizado para a compilação, realização de testes e geração do APK.
 
+O código-fonte e o arquivo APK estão disponíveis neste repositório, permitindo tanto a instalação do aplicativo quanto a continuidade de
