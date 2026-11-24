@@ -1,0 +1,109 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="cabecalho">
+      <h1>Equipe</h1>
+      <span class="contador"> {{ totalIntegrantes }} integrantes </span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="equipe-container">
+    <div class="introducao">
+      <h2>Integrantes da equipe</h2>
+      <p>Acompanhe os colaboradores e suas atividades.</p>
+
+      <button type="button" class="botao-adicionar-integrante" (click)="abrirCadastro()">+ Novo integrante</button>
+    </div>
+
+    @if (exibirCadastro) {
+    <div class="cartao cadastro-integrante">
+      <h2>Novo integrante</h2>
+
+      <div class="campo">
+        <label for="nome">Nome completo *</label>
+        <input
+          id="nome"
+          name="nome"
+          type="text"
+          [(ngModel)]="novoIntegrante.nome"
+          placeholder="Digite o nome completo"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail *</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="novoIntegrante.email"
+          placeholder="Digite o e-mail"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="cargo">Cargo *</label>
+        <input
+          id="cargo"
+          name="cargo"
+          type="text"
+          [(ngModel)]="novoIntegrante.cargo"
+          placeholder="Ex.: Colaborador"
+          required
+        />
+      </div>
+
+      @if (mensagemErro) {
+      <p class="mensagem-erro">{{ mensagemErro }}</p>
+      }
+
+      <div class="acoes-cadastro">
+        <button type="button" (click)="cancelarCadastro()">Cancelar</button>
+
+        <button type="button" (click)="salvarIntegrante()">Salvar integrante</button>
+      </div>
+    </div>
+    }
+
+    <div class="lista-integrantes">
+      @for (integrante of integrantes; track integrante.id) {
+      <div class="cartao-integrante">
+        <div class="perfil">
+          <div class="avatar">{{ integrante.iniciais }}</div>
+
+          <div class="dados-perfil">
+            <h3>{{ integrante.nome }}</h3>
+            <span>Colaborador</span>
+          </div>
+        </div>
+
+        <div class="estatisticas">
+          <div>
+            <strong>{{ integrante.total }}</strong>
+            <span>Tarefas</span>
+          </div>
+
+          <div>
+            <strong>{{ integrante.andamento }}</strong>
+            <span>Em andamento</span>
+          </div>
+
+          <div>
+            <strong>{{ integrante.concluidas }}</strong>
+            <span>Concluídas</span>
+          </div>
+        </div>
+      </div>
+      } @empty {
+      <p class="sem-integrantes">Nenhum integrante encontrado.</p>
+      }
+    </div>
+
+    <div class="informacao-local">Os dados da equipe serão armazenados localmente no dispositivo.</div>
+  </div>
+</ion-content>
+
+<app-navegacao></app-navegacao>

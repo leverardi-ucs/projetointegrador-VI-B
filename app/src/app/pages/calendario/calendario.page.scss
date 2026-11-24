@@ -1,0 +1,289 @@
+
+ion-content,
+ion-toolbar {
+  --background: #f5f6fb;
+}
+
+ion-toolbar {
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 18px;
+
+  h1 {
+    color: #151d38;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: capitalize;
+  }
+}
+
+.offline {
+  background: #e5e9ff;
+  color: #293dce;
+  border-radius: 20px;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.calendario-container {
+  padding: 15px 18px 100px;
+  position: relative;
+}
+
+.alternador {
+  display: flex;
+  background: #e5e9fa;
+  padding: 4px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+
+  button {
+    flex: 1;
+    padding: 13px;
+    border-radius: 14px;
+    background: transparent;
+    color: #151d38;
+    font-size: 15px;
+  }
+
+  .ativo {
+    background: #151d38;
+    color: white;
+  }
+}
+
+.cartao-calendario {
+  background: white;
+  border: 1px solid #dfe2eb;
+  border-radius: 18px;
+  padding: 18px 12px;
+  min-height: 310px;
+}
+
+.grade-calendario {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px 2px;
+}
+
+.dia-semana {
+  text-align: center;
+  font-size: 13px;
+  color: #626b86;
+  padding: 5px 0 12px;
+}
+
+.dia,
+.dia-vazio {
+  min-width: 0;
+  height: 49px;
+}
+
+.dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 12px;
+  background: transparent;
+  color: #151d38;
+  font-size: 15px;
+  border: 1px solid transparent;
+
+  &.selecionado {
+    background: #293dce;
+    color: white;
+  }
+}
+
+.indicadores {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  min-height: 6px;
+}
+
+.indicador {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.alta {
+    background: #b3261e;
+  }
+
+  &.media {
+    background: #c5790c;
+  }
+
+  &.baixa {
+    background: #168043;
+  }
+}
+
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 18px 0;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #626b86;
+    font-size: 12px;
+  }
+}
+
+.titulo-dia {
+  color: #151d38;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 4px 0 17px;
+  text-transform: capitalize;
+}
+
+.lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cartao-tarefa {
+  background: white;
+  border: 1px solid #dfe2eb;
+  border-radius: 17px;
+  padding: 17px 15px;
+  cursor: pointer;
+
+  p {
+    color: #626b86;
+    font-size: 13px;
+    margin: 9px 0 18px;
+  }
+}
+
+.linha-titulo,
+.linha-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.linha-titulo h3 {
+  color: #151d38;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.linha-rodape {
+  color: #626b86;
+  font-size: 13px;
+}
+
+.prioridade,
+.situacao {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.prioridade {
+  &.alta {
+    background: #fde8e7;
+    color: #a3221c;
+  }
+
+  &.media {
+    background: #fff0dc;
+    color: #8b530c;
+  }
+
+  &.baixa {
+    background: #e0f3e8;
+    color: #147a43;
+  }
+}
+
+.situacao {
+  &.pendente {
+    background: #e9ebf2;
+    color: #4b536f;
+  }
+
+  &.andamento {
+    background: #e0e8ff;
+    color: #2452db;
+  }
+
+  &.concluida {
+    background: #eee2fa;
+    color: #7130b4;
+  }
+}
+
+.sem-tarefas {
+  text-align: center;
+  color: #626b86;
+  font-size: 14px;
+  padding: 25px 10px;
+}
+
+.botao-adicionar {
+  position: fixed;
+  right: 22px;
+  bottom: 90px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #293dce;
+  color: white;
+  font-size: 32px;
+  font-weight: 400;
+  box-shadow: 0 4px 12px #151d3833;
+  z-index: 10;
+}
+
+.navegacao-mes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  h1 {
+    font-size: 21px;
+    white-space: nowrap;
+  }
+
+  button {
+    background: transparent;
+    color: #293dce;
+    font-size: 17px;
+    padding: 6px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 380px) {
+  .cabecalho {
+    flex-wrap: wrap;
+  }
+}

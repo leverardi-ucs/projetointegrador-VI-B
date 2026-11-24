@@ -1,0 +1,131 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="cabecalho">
+      <ion-button fill="clear" routerLink="/tarefas"> Voltar </ion-button>
+
+      <h1>{{ modoEdicao ? 'Editar tarefa' : 'Nova tarefa' }}</h1>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="formulario-container" (ngSubmit)="salvar()" #formTarefa="ngForm">
+    <div class="cartao">
+      <h2>Informações da tarefa</h2>
+
+      <div class="campo">
+        <label for="titulo">Título *</label>
+        <input
+          id="titulo"
+          name="titulo"
+          type="text"
+          maxlength="120"
+          placeholder="Ex.: Enviar proposta ao cliente"
+          [(ngModel)]="formulario.titulo"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="descricao">Descrição</label>
+        <textarea
+          id="descricao"
+          name="descricao"
+          rows="4"
+          placeholder="Descreva a atividade"
+          [(ngModel)]="formulario.descricao"
+        >
+        </textarea>
+      </div>
+
+      <div class="campo">
+        <label for="responsavel">Responsável *</label>
+
+        <select id="responsavel" name="responsavel" [(ngModel)]="formulario.responsavel" required>
+          <option value="" disabled>Selecione o responsável</option>
+
+          @for (usuario of usuarios; track usuario.id) {
+          <option [value]="usuario.nome">{{ usuario.nome }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="solicitante">Solicitante *</label>
+
+        <select id="solicitante" name="solicitante" [(ngModel)]="formulario.solicitante" required>
+          <option value="" disabled>Selecione o solicitante</option>
+
+          @for (usuario of usuarios; track usuario.id) {
+          <option [value]="usuario.nome">{{ usuario.nome }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="prioridade">Prioridade *</label>
+        <select id="prioridade" name="prioridade" [(ngModel)]="formulario.prioridade" required>
+          @for (prioridade of prioridades; track prioridade.valor) {
+          <option [value]="prioridade.valor">{{ prioridade.nome }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="situacao">Situação *</label>
+
+        <select id="situacao" name="situacao" [(ngModel)]="formulario.situacao" required>
+          <option value="pendente">Pendente</option>
+          <option value="andamento">Em andamento</option>
+          <option value="concluida">Concluída</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cartao">
+      <h2>Datas e horários</h2>
+
+      <div class="campo">
+        <label for="dataInicio">Data de início *</label>
+        <input
+          id="dataInicio"
+          name="dataInicio"
+          type="date"
+          lang="pt-BR"
+          [(ngModel)]="formulario.dataInicio"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="horaInicio">Hora de início *</label>
+        <input
+          id="horaInicio"
+          name="horaInicio"
+          type="time"
+          lang="pt-BR"
+          [(ngModel)]="formulario.horaInicio"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="dataPrazo">Data do prazo *</label>
+        <input id="dataPrazo" name="dataPrazo" type="date" lang="pt-BR" [(ngModel)]="formulario.dataPrazo" required />
+      </div>
+
+      <div class="campo">
+        <label for="horaPrazo">Hora do prazo *</label>
+        <input id="horaPrazo" name="horaPrazo" type="time" lang="pt-BR" [(ngModel)]="formulario.horaPrazo" required />
+      </div>
+    </div>
+
+    @if (mensagemErro) {
+    <p class="mensagem-erro" role="alert">{{ mensagemErro }}</p>
+    }
+
+    <ion-button type="submit" expand="block" [disabled]="formTarefa.invalid">
+      {{ modoEdicao ? 'Salvar alterações' : 'Salvar tarefa' }}
+    </ion-button>
+  </form>
+</ion-content>

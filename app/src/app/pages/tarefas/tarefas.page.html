@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="cabecalho-tarefas">
+      <div>
+        <small>{{ hoje }}</small>
+        <h1>Minhas tarefas</h1>
+      </div>
+
+      <span class="status-local">Offline · salvo</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="conteudo-tarefas">
+    <div class="alternador">
+      <button class="selecionado" routerLink="/tarefas">Lista</button>
+      <button routerLink="/calendario">Calendário</button>
+    </div>
+
+    <div class="filtros">
+      <button type="button" [class.ativo]="filtroSelecionado === 'todas'" (click)="selecionarFiltro('todas')">
+        Todas
+      </button>
+
+      <button type="button" [class.ativo]="filtroSelecionado === 'pendente'" (click)="selecionarFiltro('pendente')">
+        Pendentes
+      </button>
+
+      <button type="button" [class.ativo]="filtroSelecionado === 'andamento'" (click)="selecionarFiltro('andamento')">
+        Em andamento
+      </button>
+
+      <button type="button" [class.ativo]="filtroSelecionado === 'concluida'" (click)="selecionarFiltro('concluida')">
+        Concluídas
+      </button>
+    </div>
+
+    @for (tarefa of tarefasFiltradas; track tarefa.id) {
+    <div class="cartao-tarefa" [routerLink]="['/tarefa-detalhes', tarefa.id]">
+      <div class="linha-titulo">
+        <h2>{{ tarefa.titulo }}</h2>
+
+        <span class="prioridade" [ngClass]="tarefa.prioridade">
+          {{ tarefa.prioridade === 'media' ? 'Média' : (tarefa.prioridade | titlecase) }}
+        </span>
+      </div>
+
+      <p>Resp.: {{ tarefa.responsavel }} · Solic.: {{ tarefa.solicitante }}</p>
+
+      <div class="linha-rodape">
+        <span>{{ tarefa.prazo ?? ((tarefa.dataPrazo | date:'dd/MM/yyyy') + ', ' + tarefa.horaPrazo) }}</span>
+
+        <span class="situacao" [ngClass]="tarefa.situacao">
+          {{ tarefa.situacao === 'andamento' ? '● Em andamento' : tarefa.situacao === 'concluida' ? '● Concluída' : '● Pendente' }}
+        </span>
+      </div>
+    </div>
+    } @if (tarefasFiltradas.length === 0) {
+    <div class="sem-tarefas">Nenhuma tarefa encontrada.</div>
+    }
+  </div>
+
+  <!-- Botão de adicionar tarefa -->
+  <button class="botao-adicionar" routerLink="/tarefa-form">+</button>
+</ion-content>
+
+<ion-footer>
+  <app-navegacao></app-navegacao>
+</ion-footer>

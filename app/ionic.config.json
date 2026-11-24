@@ -1,0 +1,7 @@
+{
+  "name": "agende-se",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

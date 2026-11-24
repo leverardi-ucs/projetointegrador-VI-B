@@ -1,0 +1,110 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tarefas"> Voltar </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button
+        [routerLink]="['/tarefa-form', tarefa?.id]"
+        [disabled]="!tarefa">
+        Editar
+      </ion-button>
+
+      <ion-button
+        color="danger"
+        [disabled]="!tarefa"
+        (click)="excluirTarefa()"
+        aria-label="Excluir tarefa">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (tarefa) {
+  <div class="detalhes-container">
+    <span class="prioridade" [ngClass]="tarefa.prioridade">
+      {{ tarefa.prioridade === 'media' ? 'Média' : (tarefa.prioridade | titlecase) }}
+    </span>
+
+    <h1>{{ tarefa.titulo }}</h1>
+
+    <div class="cartao">
+      <div class="informacao">
+        <span>Responsável</span>
+        <strong>{{ tarefa.responsavel }}</strong>
+      </div>
+
+      <div class="informacao">
+        <span>Solicitante</span>
+        <strong>{{ tarefa.solicitante }}</strong>
+      </div>
+
+      <div class="informacao">
+        <span>Início</span>
+        <strong> {{ tarefa.dataInicio | date:'dd/MM/yyyy' }}, {{ tarefa.horaInicio }} </strong>
+      </div>
+
+      <div class="informacao">
+        <span>Prazo</span>
+        <strong> {{ tarefa.dataPrazo | date:'dd/MM/yyyy' }}, {{ tarefa.horaPrazo }} </strong>
+      </div>
+
+      <div class="informacao">
+        <span>Armazenamento</span>
+        <strong>Armazenamento local (SQLite)</strong>
+      </div>
+    </div>
+
+    <div class="cartao">
+      <h2>Descrição</h2>
+      <p>{{ tarefa.descricao }}</p>
+    </div>
+
+    <h3>Situação</h3>
+
+    <div class="opcoes-situacao">
+      <button type="button" [class.selecionado]="tarefa.situacao === 'pendente'" (click)="alterarSituacao('pendente')">
+        Pendente
+      </button>
+
+      <button
+        type="button"
+        [class.selecionado]="tarefa.situacao === 'andamento'"
+        (click)="alterarSituacao('andamento')"
+      >
+        Andamento
+      </button>
+
+      <button
+        type="button"
+        [class.selecionado]="tarefa.situacao === 'concluida'"
+        (click)="alterarSituacao('concluida')"
+      >
+        Concluída
+      </button>
+    </div>
+  </div>
+  } @else {
+  <div class="detalhes-container">
+    <h2>Tarefa não encontrada.</h2>
+  </div>
+  }
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      [color]="tarefa?.situacao === 'concluida' ? 'success' : 'primary'"
+      [disabled]="!tarefa || tarefa.situacao === 'concluida'"
+      (click)="alterarSituacao('concluida')"
+    >
+      {{ tarefa?.situacao === 'concluida'
+        ? '✓ Tarefa concluída'
+        : 'Marcar como concluída' }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

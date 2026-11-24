@@ -1,0 +1,157 @@
+
+ion-content,
+ion-toolbar {
+  --background: #f5f6fb;
+}
+
+ion-header {
+  ion-toolbar {
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+  }
+
+  ion-button {
+    --color: #151d38;
+    --background: #ffffff;
+    --border-radius: 25px;
+    --border-color: #d4d9e6;
+    --border-width: 1px;
+    --border-style: solid;
+    text-transform: none;
+  }
+
+  ion-button[color="danger"] {
+    --color: #b3261e;
+    --background: #fff0f0;
+  }
+}
+
+.detalhes-container {
+  padding: 20px 18px 35px;
+
+  h1 {
+    color: #151d38;
+    font-size: 27px;
+    font-weight: 700;
+    margin: 14px 0 20px;
+  }
+
+  h3 {
+    color: #151d38;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+  }
+}
+
+.prioridade {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.alta {
+  background: #fde8e7;
+  color: #a3221c;
+}
+
+.media {
+  background: #fff0dc;
+  color: #8b530c;
+}
+
+.baixa {
+  background: #e0f3e8;
+  color: #147a43;
+}
+
+.cartao {
+  background: #ffffff;
+  border: 1px solid #dfe2eb;
+  border-radius: 17px;
+  padding: 20px 16px;
+  margin-bottom: 15px;
+
+  h2 {
+    color: #151d38;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  p {
+    color: #151d38;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.informacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 17px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  span {
+    color: #626b86;
+    font-size: 14px;
+  }
+
+  strong {
+    color: #151d38;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+  }
+}
+
+.opcoes-situacao {
+  display: flex;
+  gap: 8px;
+
+  button {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 5px;
+    border-radius: 25px;
+    border: 1px solid #cbd1e1;
+    background: #e9ebf2;
+    color: #4b536f;
+    font-size: 13px;
+  }
+
+  .selecionado {
+    background: #2452db;
+    border-color: #2452db;
+    color: white;
+  }
+}
+
+ion-footer {
+  ion-toolbar {
+    --padding-start: 18px;
+    --padding-end: 18px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+  }
+
+  ion-button {
+    --background: #293dce;
+    --border-radius: 12px;
+    height: 52px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: none;
+    margin: 0;
+  }
+}

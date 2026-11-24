@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="cabecalho">
+      <div class="navegacao-mes">
+        <button type="button" (click)="mesAnterior()" aria-label="Mês anterior">&#10094;</button>
+
+        <h1>{{ nomeMes | titlecase }}</h1>
+
+        <button type="button" (click)="proximoMes()" aria-label="Próximo mês">&#10095;</button>
+      </div>
+
+      <span class="offline">Offline · dados locais</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="calendario-container">
+    <div class="alternador">
+      <button type="button" routerLink="/tarefas">Lista</button>
+
+      <button type="button" class="ativo">Calendário</button>
+    </div>
+
+    <div class="cartao-calendario">
+      <div class="grade-calendario">
+        @for (semana of ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']; track $index) {
+        <div class="dia-semana">{{ semana }}</div>
+        } @for (dia of diasCalendario; track $index) { @if (dia !== null) {
+        <button type="button" class="dia" [class.selecionado]="diaSelecionado(dia)" (click)="selecionarDia(dia)">
+          <span>{{ dia }}</span>
+
+          <div class="indicadores">
+            @for (prioridade of prioridadesDoDia(dia); track $index) {
+            <span class="indicador" [ngClass]="prioridade"> </span>
+            }
+          </div>
+        </button>
+        } @else {
+        <div class="dia-vazio"></div>
+        } }
+      </div>
+    </div>
+
+    <div class="legenda">
+      <span> <i class="indicador alta"></i> Alta </span>
+
+      <span> <i class="indicador media"></i> Média </span>
+
+      <span> <i class="indicador baixa"></i> Baixa </span>
+    </div>
+
+    <h2 class="titulo-dia">
+      {{ dataSelecionada | date:"EEEE, d 'de' MMMM 'de' yyyy":undefined:'pt-BR' }} · {{ tarefasDoDia.length }} {{
+      tarefasDoDia.length === 1 ? 'tarefa' : 'tarefas' }}
+    </h2>
+
+    <div class="lista-tarefas">
+      @for (tarefa of tarefasDoDia; track tarefa.id) {
+      <div class="cartao-tarefa" [routerLink]="['/tarefa-detalhes', tarefa.id]">
+        <div class="linha-titulo">
+          <h3>{{ tarefa.titulo }}</h3>
+
+          <span class="prioridade" [ngClass]="tarefa.prioridade">
+            {{ tarefa.prioridade === 'media' ? 'Média' : (tarefa.prioridade | titlecase) }}
+          </span>
+        </div>
+
+        <p>Resp.: {{ tarefa.responsavel }} · Solic.: {{ tarefa.solicitante }}</p>
+
+        <div class="linha-rodape">
+          <span>{{ tarefa.horaPrazo }}</span>
+
+          <span class="situacao" [ngClass]="tarefa.situacao">
+            {{ tarefa.situacao === 'andamento' ? 'Em andamento' : tarefa.situacao === 'concluida' ? 'Concluída' :
+            'Pendente' }}
+          </span>
+        </div>
+      </div>
+      } @empty {
+      <p class="sem-tarefas">Nenhuma tarefa para este dia.</p>
+      }
+    </div>
+
+    <button type="button" class="botao-adicionar" routerLink="/tarefa-form" aria-label="Adicionar tarefa">+</button>
+  </div>
+</ion-content>
+
+<app-navegacao></app-navegacao>

@@ -1,0 +1,105 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="cabecalho">
+      <h1>Painel</h1>
+      <span class="periodo">Este mês</span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="dashboard-container">
+    <div class="grade-indicadores">
+      <div class="cartao-indicador">
+        <span>Concluídas</span>
+        <strong>{{ concluidas }}</strong>
+      </div>
+
+      <div class="cartao-indicador">
+        <span>Em andamento</span>
+        <strong>{{ andamento }}</strong>
+      </div>
+
+      <div class="cartao-indicador">
+        <span>Atrasadas</span>
+        <strong>{{ atrasadas }}</strong>
+      </div>
+
+      <div class="cartao-indicador">
+        <span>Taxa de conclusão</span>
+        <strong>{{ taxaConclusao }}%</strong>
+      </div>
+    </div>
+
+    <div class="cartao">
+      <h2>Tarefas por prioridade</h2>
+      <p class="subtitulo">Distribuição de todas as tarefas do mês</p>
+
+      <div class="distribuicao">
+        @if (totalTarefas > 0) {
+        <div
+          class="grafico-rosca"
+          [style.background]="
+            'conic-gradient(' +
+            '#b3261e 0% ' + percentual(contarPrioridade('alta')) + '%,' +
+            '#c5790c ' + percentual(contarPrioridade('alta')) + '% ' +
+              (percentual(contarPrioridade('alta')) +
+               percentual(contarPrioridade('media'))) + '%,' +
+            '#168043 ' +
+              (percentual(contarPrioridade('alta')) +
+               percentual(contarPrioridade('media'))) + '% 100%)'
+          "
+        >
+          <div class="centro-grafico">
+            <strong>{{ totalTarefas }}</strong>
+            <span>tarefas</span>
+          </div>
+        </div>
+        } @else {
+        <div class="grafico-rosca grafico-vazio">
+          <div class="centro-grafico">
+            <strong>0</strong>
+            <span>tarefas</span>
+          </div>
+        </div>
+        }
+
+        <div class="legenda-prioridades">
+          @for (prioridade of prioridades; track prioridade.classe) {
+          <div class="item-legenda">
+            <span class="bolinha" [ngClass]="prioridade.classe"> </span>
+
+            <span class="nome-prioridade"> {{ prioridade.nome }} ({{ prioridade.quantidade }}) </span>
+
+            <strong> {{ percentual(prioridade.quantidade) }}% </strong>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="cartao">
+      <h2>Taxa de conclusão por responsável</h2>
+
+      <div class="lista-desempenho">
+        @for (responsavel of desempenhoResponsaveis; track responsavel.nome) {
+        <div class="responsavel">
+          <div class="linha-desempenho">
+            <span> {{ responsavel.nome }} · {{ responsavel.concluidas }} de {{ responsavel.total }} </span>
+
+            <span>{{ responsavel.percentual }}%</span>
+          </div>
+
+          <div class="barra-progresso">
+            <div class="progresso" [style.width.%]="responsavel.percentual"></div>
+          </div>
+        </div>
+        } @empty {
+        <p class="sem-dados">Nenhuma tarefa encontrada neste mês.</p>
+        }
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<app-navegacao></app-navegacao>
